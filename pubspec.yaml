@@ -1,0 +1,7 @@
+
+name: cuid
+version: 0.0.1
+author: Levi Cook <levicook@gmail.com>
+homepage: https://github.com/levicook/cuid
+dev_dependencies:
+  test: ^1.6.4
