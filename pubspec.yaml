@@ -1,7 +1,7 @@
 
 name: cuid
-description: collision resisitant identifiers
-version: 0.1.1
+description: cuid is a library for generating unique collision-resistant IDs optimized for horizontal scaling and performance
+version: 0.1.2
 author: Levi Cook <levicook@gmail.com>
 homepage: https://github.com/levicook/cuid
 
