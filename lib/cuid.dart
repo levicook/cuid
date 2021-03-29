@@ -9,7 +9,7 @@ String _timeBlock() {
   return now.toRadixString(_base);
 }
 
-final int _discreteValues = pow(_base, 4);
+final int _discreteValues = pow(_base, 4).toInt();
 int _counter = 0;
 String _counterBlock() {
   _counter = _counter < _discreteValues ? _counter : 0;
@@ -59,6 +59,5 @@ String newCuid() {
 
 /// isCuid validates the supplied string is a cuid
 bool isCuid(String s) {
-  s = s ?? '';
   return s.startsWith(_prefix);
 }
