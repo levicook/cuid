@@ -2,37 +2,38 @@ import 'dart:io' as io;
 import 'dart:math';
 
 final String _prefix = 'c';
-final int _base = 36; // size of the alphabet
+final num _base = 36; // size of the alphabet
+final num _four = 4;
 
 String _timeBlock() {
   final now = DateTime.now().toUtc().millisecondsSinceEpoch;
-  return now.toRadixString(_base);
+  return now.toRadixString(_base.toInt());
 }
 
-final int _discreteValues = pow(_base, 4);
+final num _discreteValues = pow(_base, _four);
 int _counter = 0;
 String _counterBlock() {
   _counter = _counter < _discreteValues ? _counter : 0;
   _counter++;
-  return _pad((_counter - 1).toRadixString(_base), 4);
+  return _pad((_counter - 1).toRadixString(_base.toInt()), 4);
 }
 
 final String _fingerprint = _pidFingerprint() + _hostFingerprint();
 
 String _pidFingerprint() {
-  return _pad(io.pid.toRadixString(_base), 2);
+  return _pad(io.pid.toRadixString(_base.toInt()), 2);
 }
 
 String _hostFingerprint() {
   final int hostId =
       io.Platform.localHostname.runes.reduce((acc, r) => acc + r);
-  return _pad(hostId.toRadixString(_base), 2);
+  return _pad(hostId.toRadixString(_base.toInt()), 2);
 }
 
 final _secureRandom = Random.secure();
 String _secureRandomBlock() {
   const max = 1 << 32;
-  return _pad(_secureRandom.nextInt(max).toRadixString(_base), 4);
+  return _pad(_secureRandom.nextInt(max).toRadixString(_base.toInt()), 4);
 }
 
 String _pad(String s, int l) {
@@ -58,7 +59,4 @@ String newCuid() {
 }
 
 /// isCuid validates the supplied string is a cuid
-bool isCuid(String s) {
-  s = s ?? '';
-  return s.startsWith(_prefix);
-}
+bool isCuid(String s) => s.startsWith(_prefix);
