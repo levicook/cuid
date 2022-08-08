@@ -1,4 +1,3 @@
-
 name: cuid
 description: cuid is a library for generating unique collision-resistant IDs optimized for horizontal scaling and performance
 version: 0.1.2
@@ -9,4 +8,4 @@ dev_dependencies:
   test: ^1.6.4
 
 environment:
-  sdk: '>=2.0.0 <3.0.0'
+  sdk: ">=2.17.0 <3.0.0"
